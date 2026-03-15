@@ -230,6 +230,9 @@ function createWindowWithBounds (bounds, customArgs) {
   })
   mainView.webContents.loadURL(browserPage)
 
+  // For debugging crashes at startup -- Don't enable for prod
+  // mainView.webContents.openDevTools({ mode: 'detach' })
+
   if (bounds.maximized) {
     newWin.maximize()
 

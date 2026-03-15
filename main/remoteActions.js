@@ -29,7 +29,25 @@ function showFocusModeDialog2() {
   })
 }
 
+function showTaskManagementDisabledDialog() {
+  console.log('Calling task management disable dialog')
+  dialog.showMessageBox({
+    type: 'info',
+    buttons: [l('enableTaskManagement'), l('keepTaskManagementDisabled')],
+    message: l('isTaskManagementDisabled'),
+    detail: l('taskManagementDisabledExplanation')
+  }).then(res => {
+    if (res.response === 0) {
+      settings.set('taskManagementEnabled', true)
+    }
+  }).catch(err => {
+    console.error('Error while closing task management info dialog', err)
+  })
+}
+
 ipc.handle('showFocusModeDialog2', showFocusModeDialog2)
+
+ipc.handle('showTaskManagementDisabledDialog', showTaskManagementDisabledDialog)
 
 ipc.handle('showOpenDialog', async function (e, options) {
   const result = await dialog.showOpenDialog(windows.windowFromContents(e.sender).win, options)

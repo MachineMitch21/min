@@ -8,9 +8,11 @@ var tabEditor = require('navbar/tabEditor.js')
 var focusMode = require('focusMode.js')
 var modalMode = require('modalMode.js')
 var keyboardNavigationHelper = require('util/keyboardNavigationHelper.js')
+var settings = require('../util/settings/settings.js')
 var Sortable = require('sortablejs')
 
 const createTaskContainer = require('taskOverlay/taskOverlayBuilder.js')
+const taskManagement = require('taskManagement.js')
 
 var taskContainer = document.getElementById('task-area')
 var taskSwitcherButton = document.getElementById('switch-task-button')
@@ -27,6 +29,11 @@ function addTaskFromMenu () {
   /* new tasks can't be created in focus mode or modal mode */
   if (focusMode.enabled()) {
     focusMode.warn()
+    return
+  }
+
+  if (!taskManagement.enabled()) {
+    taskManagement.warn()
     return
   }
 
@@ -180,6 +187,12 @@ var taskOverlay = {
     /* disabled in focus mode */
     if (focusMode.enabled()) {
       focusMode.warn()
+      return
+    }
+
+
+    if (!taskManagement.enabled()) {
+      taskManagement.warn()
       return
     }
 

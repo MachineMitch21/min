@@ -16,6 +16,19 @@ function buildTouchBar () {
       height: Math.round(size.height * 0.65)
     })
   }
+
+  const viewTasksButton = new TouchBarButton({
+    accessibilityLabel: l('viewTasks'),
+    icon: getTouchBarIcon('NSImageNameTouchBarListViewTemplate'),
+    click: function () {
+      sendIPCToWindow(windows.getCurrent(), 'toggleTaskOverlay')
+    }
+  })
+
+  settings.listen('taskManagementEnabled', function(value) {
+    viewTasksButton.enabled = value
+  })
+
   return new TouchBar({
     items: [
       new TouchBarButton({
@@ -50,13 +63,7 @@ function buildTouchBar () {
           sendIPCToWindow(windows.getCurrent(), 'addTab')
         }
       }),
-      new TouchBarButton({
-        accessibilityLabel: l('viewTasks'),
-        icon: getTouchBarIcon('NSImageNameTouchBarListViewTemplate'),
-        click: function () {
-          sendIPCToWindow(windows.getCurrent(), 'toggleTaskOverlay')
-        }
-      })
+      viewTasksButton
     ]
   })
 }

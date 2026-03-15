@@ -255,6 +255,64 @@ newWindowSettingInput.addEventListener('change', function() {
   settings.set('newWindowOption', parseInt(this.value))
 })
 
+/* task management setting */
+
+var taskManagementCheckbox = document.getElementById('checkbox-task-management')
+var startupOptionsContainer = document.getElementById('startup-options-container')
+var newWindowOptionsContainer = document.getElementById('new-window-options-container')
+
+/**
+ * Setup the coupling between task management toggling and other elements
+ * i.e. -> startup options and new window options have reliance on the setting of task management now
+ * 
+ * When enabling task management:
+ * - startupTabOption sets to option 3
+ * - newWindowOption sets to 1
+ * 
+ * When disabling task management:
+ * - startupTabOption sets to option 2
+ * - newWindowOption sets to 1
+ * 
+ * TODO: Make startupTabOption and newWindowOption configurable for toggle state of task management?
+ * @param {boolean} enable 
+ */
+function handleToggleTaskManagement(enable) {
+  settings.set('startupTabOption', !enable ? 2 : 3)
+  settings.set('newWindowOption', 1)
+
+  var display = !enable ? "none" : "block";
+  startupOptionsContainer.style.display = display;
+  newWindowOptionsContainer.style.display = display;
+}
+
+settings.get('taskManagementEnabled', function(value) {
+  if (value === true) {
+    taskManagementCheckbox.checked = true
+  }
+
+  handleToggleTaskManagement(taskManagementCheckbox.checked)
+})
+
+settings.listen('taskManagementEnabled', function(value) {
+  // If already checked/not check and task management is being enabled/disabled by other means
+  // Then, skip the toggling on the preferences page
+  // Probably the user is enabling from modal dialog
+  if (taskManagementCheckbox.checked && value === true ||
+      (!taskManagementCheckbox.checked && !value)
+  ) {
+    return
+  }
+
+  taskManagementCheckbox.checked = value
+
+  handleToggleTaskManagement(value)
+})
+
+taskManagementCheckbox.addEventListener('change', function(e) {
+  settings.set('taskManagementEnabled', this.checked)
+  handleToggleTaskManagement(this.checked)
+})
+
 /* userscripts setting */
 
 settings.get('userscriptsEnabled', function (value) {

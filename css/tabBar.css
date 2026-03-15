@@ -397,6 +397,10 @@ body.is-focus-mode .navbar-action-button:not(#menu-button) {
   display: none;
 }
 
+body.is-task-management-disabled .navbar-action-button:is(#switch-task-button) {
+  display: none;
+}
+
 /* progress bar */
 
 .progress-bar-container {

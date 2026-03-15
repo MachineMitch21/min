@@ -141,22 +141,32 @@
       <h3 data-string="settingsAdditionalFeaturesHeading"></h3>
 
       <div class="setting-section">
+        <input type="checkbox" id="checkbox-task-management">
+        <label 
+          for="checkbox-task-management" 
+          data-string="settingsTaskManagementToggle"
+        ></label>
+        <div
+          class="settings-info-subheading setting-secondary-label"
+          data-string="settingsTaskManagementToggleExplanation"
+          data-allowHTML
+        ></div>
+      </div>
+
+      <div class="setting-section" id="startup-options-container">
         <label for="startupOptions" data-string="settingsStartupOptions"></label>
         <select id="startup-options" name="startupOptions">
           <option value="1" data-string="settingsStartupCreateTask"></option>
-          <option 
-          value="2" data-string="settingsStartupNewTaskandBackground"></option>
-          <option value="3"
-          data-string="settingsStartupNewTaskOnly"></option>
+          <option value="2" data-string="settingsStartupNewTaskandBackground"></option>
+          <option value="3" data-string="settingsStartupNewTaskOnly"></option>
         </select>
       </div>
 
-      <div class="setting-section">
+      <div class="setting-section" id="new-window-options-container">
         <label for="newWindowOptions" data-string="settingsNewWindowOptions"></label>
         <select id="new-window-options" name="newWindowOptions">
           <option value="1" data-string="settingsNewWindowCreateTask"></option>
-          <option 
-          value="2" data-string="settingsNewWindowPickTask"></option>
+          <option value="2" data-string="settingsNewWindowPickTask"></option>
         </select>
       </div>
 

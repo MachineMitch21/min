@@ -92,6 +92,10 @@
     "closeDialog": "OK", //used as a label for the button that closes the dialog
     "focusModeExplanation1": "In focus mode, you can't create new tabs or switch tasks.",
     "focusModeExplanation2": "You can leave focus mode by unchecking \"focus mode\" in the view menu.",
+    "isTaskManagementDisabled": "Task Management is Disabled.",
+    "enableTaskManagement": "Enable Task Management",
+    "keepTaskManagementDisabled": "Keep Disabled",
+    "taskManagementDisabledExplanation": "If you want to enable task management, then go to File -> Preferences.  Then, check the \"Task Management Enabled\" checkbox.  Or you can click the \"Enable Task Management\" button.",
     /* relative dates */
     "timeRangeJustNow": "Just now",
     "timeRangeMinutes": "A few minutes ago",
@@ -160,6 +164,8 @@
     "settingsDarkModeSystem": "Follow system theme",
     "settingsSiteThemeToggle": "Enable site theme",
     "settingsAdditionalFeaturesHeading": "Additional Features",
+    "settingsTaskManagementToggle": "Enable Task Management",
+    "settingsTaskManagementToggleExplanation": "Task management offers the ability to switch between tab groups or workflows according to your preferences.",
     "settingsUserscriptsToggle": "Enable user scripts",
     "settingsShowDividerToggle": "Show divider between tabs",
     "settingsLanguageSelection": "Language: ",
@@ -175,6 +181,8 @@
     "settingsUsageStatisticsToggle": {
       "unsafeHTML": "Send usage statistics (<a href=\"https://github.com/minbrowser/min/blob/master/docs/statistics.md\">More info</a>)"
     },
+    "settingsTaskManagementToggle": "Enable Task Management",
+    "settingsTaskManagementToggleExplanation": "Task management offers the ability to switch between tab groups or workflows according to your preferences.",
     "settingsStartupOptions": "When Min starts: ",
     "settingsStartupCreateTask": "Re-open previous tabs",
     "settingsStartupNewTaskandBackground": "Move previous tabs to a background task",

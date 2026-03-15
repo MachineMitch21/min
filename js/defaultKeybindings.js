@@ -2,6 +2,7 @@ const keybindings = require('keybindings.js')
 var webviews = require('webviews.js')
 var browserUI = require('browserUI.js')
 var focusMode = require('focusMode.js')
+var taskManagement = require('taskManagement.js')
 var modalMode = require('modalMode.js')
 var tabEditor = require('navbar/tabEditor.js')
 var urlParser = require('util/urlParser.js')
@@ -193,6 +194,11 @@ const defaultKeybindings = {
         return
       }
 
+      if (!taskManagement.enabled()) {
+        taskManagement.warn()
+        return
+      }
+
       const taskSwitchList = tasks.filter(t => !tasks.isCollapsed(t.id))
 
       const currentTaskIdx = taskSwitchList.findIndex(t => t.id === tasks.getSelected().id)
@@ -204,6 +210,11 @@ const defaultKeybindings = {
     keybindings.defineShortcut('switchToPreviousTask', function (d) {
       if (focusMode.enabled()) {
         focusMode.warn()
+        return
+      }
+
+      if (!taskManagement.enabled()) {
+        taskManagement.warn()
         return
       }
 
@@ -223,6 +234,11 @@ const defaultKeybindings = {
         keybindings.defineShortcut({ keys: 'shift+option+mod+' + i }, function (e) {
           if (focusMode.enabled()) {
             focusMode.warn()
+            return
+          }
+
+          if (!taskManagement.enabled()) {
+            taskManagement.warn()
             return
           }
 

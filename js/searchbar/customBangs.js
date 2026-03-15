@@ -16,6 +16,7 @@ const bookmarkConverter = require('bookmarkConverter.js')
 const searchbarPlugins = require('searchbar/searchbarPlugins.js')
 const tabEditor = require('navbar/tabEditor.js')
 const formatRelativeDate = require('util/relativeDate.js')
+const taskManagement = require('../taskManagement')
 
 function moveToTaskCommand (taskId) {
   // remove the tab from the current task
@@ -46,6 +47,11 @@ function switchToTaskCommand (taskId) {
   /* disabled in focus mode */
   if (focusMode.enabled()) {
     focusMode.warn()
+    return
+  }
+
+  if (!taskManagement.enabled()) {
+    taskManagement.warn()
     return
   }
 
@@ -195,6 +201,11 @@ function initialize () {
               return
             }
 
+            if (!taskManagement.enabled()) {
+              taskManagement.warn()
+              return
+            }
+
             moveToTaskCommand(task.id)
           }
         }
@@ -207,6 +218,11 @@ function initialize () {
       /* disabled in focus mode */
       if (focusMode.enabled()) {
         focusMode.warn()
+        return
+      }
+
+      if (!taskManagement.enabled()) {
+        taskManagement.warn()
         return
       }
 
@@ -272,6 +288,11 @@ function initialize () {
       /* disabled in focus mode */
       if (focusMode.enabled()) {
         focusMode.warn()
+        return
+      }
+
+      if (!taskManagement.enabled()) {
+        taskManagement.warn()
         return
       }
 
