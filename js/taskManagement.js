@@ -2,7 +2,7 @@
 
 /*
 *   Initially, this is being implemented like focusMode.
-*   However, due to the nature of this feature, it's not transient in nature like focusMode.
+*   However, due to the nature of this feature, it's not transient like focusMode.
 *   Instead, it's a persistent setting that follows the user with their preferences.
 *   Given that, it should be implemented in a more modular way, theoretically.
 *   But we don't necessarily need to worry about that for MVP version.

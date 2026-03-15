@@ -43,7 +43,8 @@ function buildAppMenu (options = {}) {
         if (!event.triggeredByAccelerator) {
           sendIPCToWindow(window, 'addTask')
         }
-      }
+      },
+      enabled: settings.get('taskManagementEnabled')
     },
     {
       label: l('appMenuNewWindow'),
